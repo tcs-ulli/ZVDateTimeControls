@@ -45,9 +45,10 @@ uses
   {$ifdef unix}
   clocale, // needed to initialize default locale settings on Linux.
   {$endif}
+  LCLVersion,
   Classes, SysUtils, Controls, LCLType, Graphics, Math, StdCtrls, Buttons,
-  ExtCtrls, Forms, ComCtrls, Types, LMessages, LazUTF8, CalendarControlWrapper,
-  LCLVersion;
+  ExtCtrls, Forms, ComCtrls, Types, LMessages,
+  CalendarControlWrapper;
 
 const
 { With future Lazarus 1.4, use DateTimeCtrls package: }
@@ -483,7 +484,11 @@ function IsNullDate(DT: TDateTime): Boolean;
 implementation
 
 uses
-  DateUtils, LCLCalendarWrapper;
+  DateUtils, LCLCalendarWrapper
+  {$if lcl_fullversion >= 01070000}
+  ,LazUTF8
+  {$endif}
+  ;
 
 function NumberOfDaysInMonth(const Month, Year: Word): Word;
 begin
