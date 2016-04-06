@@ -485,7 +485,7 @@ implementation
 
 uses
   DateUtils, LCLCalendarWrapper
-  {$if lcl_fullversion >= 01070000}
+  {$if lcl_fullversion >= 01040000}
   ,LazUTF8
   {$endif}
   ;
